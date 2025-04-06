@@ -1,52 +1,44 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #101820;
-  color: #fff;
-}
-.container {
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
-}
-h1, h2, h3 {
-  color: #00ffc8;
-}
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-}
-button {
-  padding: 10px 20px;
-  background: #00ffc8;
-  color: #101820;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  margin: 5px;
-}
-button:hover {
-  background: #00c9a7;
-}
-.hidden { display: none; }
-.nav button {
-  margin: 5px 10px;
-}
-.card {
-  background: #1f2a38;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-.question {
-  margin-top: 10px;
-  padding: 10px;
-  background: #283747;
-  border-radius: 8px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blooket Clone</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div id="login-screen">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Enter your username" />
+      <button onclick="login()">Start</button>
+    </div>
+
+    <div id="dashboard" class="hidden">
+      <h2>Welcome, <span id="user-name"></span>!</h2>
+      <p>XP: <span id="xp-display">0</span></p>
+      <div class="nav">
+        <button onclick="showPage('create-set')">➕ Create Set</button>
+        <button onclick="showPage('discover-sets')">🔍 Discover Sets</button>
+      </div>
+    </div>
+
+    <div id="create-set" class="hidden">
+      <h3>Create New Set</h3>
+      <input type="text" id="set-title" placeholder="Set Title" />
+      <textarea id="set-desc" placeholder="Description"></textarea>
+      <div id="question-list"></div>
+      <button onclick="addQuestion()">Add Question</button>
+      <button onclick="saveSet()">✅ Save Set</button>
+      <button onclick="showPage('dashboard')">← Back</button>
+    </div>
+
+    <div id="discover-sets" class="hidden">
+      <h3>Your Sets</h3>
+      <div id="set-display"></div>
+      <button onclick="showPage('dashboard')">← Back</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
